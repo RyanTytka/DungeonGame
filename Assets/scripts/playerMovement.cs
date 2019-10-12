@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
     Rigidbody2D body;
     public Camera camera;
     public GameObject swordHitbox;
-    //public Light highLight, lowLight;
+    public Light highLight, lowLight;
 
 
     float horizontal;
@@ -42,8 +42,8 @@ public class playerMovement : MonoBehaviour
         //move player, camera, and light
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
         camera.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 20);
-        //lowLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 1);
-        //highLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 2);
+        lowLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 1);
+        highLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 2);
 
         Vector2 dir = Input.mousePosition - gameObject.transform.position;
         gameObject.transform.rotation = Quaternion.Euler( Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, -90, -90);
