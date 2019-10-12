@@ -36,6 +36,11 @@ public class monsterAI : MonoBehaviour
 
         body.velocity = new Vector2(0,0);
         transform.position += dir;
+
+        //rotate monster
+        Vector3 targetPos = target.position;
+        float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
     }
 
 
