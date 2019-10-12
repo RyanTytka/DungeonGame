@@ -19102,6 +19102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d50405b05f44042b59ccf27ed4ed46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monster: {fileID: 794958444}
+  wall: {fileID: 315690226}
+  tilemap: {fileID: 315690230}
 --- !u!4 &713694582
 Transform:
   m_ObjectHideFlags: 0
@@ -19208,6 +19211,12 @@ Transform:
   m_Father: {fileID: 1430173716}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &794958444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7124318014977628524, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1944981872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &814951981
 GameObject:
   m_ObjectHideFlags: 0
@@ -19530,6 +19539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4629705581258766675, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce, type: 3}
