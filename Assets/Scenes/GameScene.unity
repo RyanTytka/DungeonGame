@@ -147,9 +147,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 0.9245283, g: 0.60276824, b: 0.13082945, a: 1}
+  m_Color: {r: 0.8773585, g: 0.6301991, b: 0.25658596, a: 1}
   m_Intensity: 8
-  m_Range: 3
+  m_Range: 3.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -239,7 +239,7 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.9245283, g: 0.60276824, b: 0.13082945, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -19299,9 +19299,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 519420031}
+  swordHitbox: {fileID: 0}
   highLight: {fileID: 141212967}
   lowLight: {fileID: 13146988}
-  runSpeed: 3.5
+  runSpeed: 2.5
 --- !u!58 &1286359770
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19478,7 +19479,7 @@ PrefabInstance:
     - target: {fileID: 3545732260177319621, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: 3545732260177319621, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,
         type: 3}

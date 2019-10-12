@@ -45,9 +45,7 @@ public class playerMovement : MonoBehaviour
         lowLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 1);
         highLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 2);
 
-        Vector2 dir = Input.mousePosition - gameObject.transform.position;
-        gameObject.transform.rotation = Quaternion.Euler( Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, -90, -90);
-
+        //aim player
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg + 180;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
