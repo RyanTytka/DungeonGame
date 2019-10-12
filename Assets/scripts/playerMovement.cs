@@ -8,7 +8,8 @@ public class playerMovement : MonoBehaviour
     public Camera camera;
     public GameObject swordHitbox;
     public Light highLight, lowLight;
-
+    float timer = 1f;
+    GameObject swing;
 
     float horizontal;
     float vertical;
@@ -26,12 +27,18 @@ public class playerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        timer += Time.deltaTime;
 
         //swing sword
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && timer > 1f)
         {
-            Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            timer = 0f;
         }
+
+        if(timer > .1f)
+            Destroy(swing);
+
 
         
     }
@@ -49,13 +56,6 @@ public class playerMovement : MonoBehaviour
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg + 180;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
-
-
-
     }
-
-        
-    
-
 
 }
