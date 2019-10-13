@@ -49,7 +49,22 @@ public class playerMovement : MonoBehaviour
         //timer for when the player can take damage
         if (damageBoostTimer > 0)
         {
+            Color c = GetComponentInChildren<SpriteRenderer>().material.color;
+            if (c.a == 1)
+            {
+                c.a = .3f;
+            }
+            else
+            {
+                c.a = 1;
+            }
+            GetComponentInChildren<SpriteRenderer>().material.color = c;
             damageBoostTimer -= Time.deltaTime;
+            if (damageBoostTimer <= 0)
+            {
+                c.a = 1;
+                GetComponentInChildren<SpriteRenderer>().material.color = c;
+            }
         }
     }
 
@@ -76,6 +91,16 @@ public class playerMovement : MonoBehaviour
             health--;
             healthText.text = "health: " + health;
             damageBoostTimer = 2;
+            if (health <= 0)
+            {
+                gameOver();
+            }
         }
+    }
+
+    //show a game over screen and tell the player to press a button or something to try again
+    private void gameOver()
+    {
+        
     }
 }

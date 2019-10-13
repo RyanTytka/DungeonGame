@@ -7,7 +7,7 @@ public class oozeAI : MonoBehaviour
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
-    int health = 10;
+    public int health = 10;
     int flashTimer = 0;
 
     // Start is called before the first frame update
