@@ -17,7 +17,6 @@ public class map : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
         bounds = tilemap.cellBounds;
         allTiles = tilemap.GetTilesBlock(bounds);
-        Debug.Log(bounds);
         buildWalls();
     }
 
