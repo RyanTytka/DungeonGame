@@ -62,16 +62,15 @@ public class mobSpawn : MonoBehaviour
                     break;
                 }
             }
-
             if (!spawnPoint && numOoze > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
-                Debug.Log(ranX + ", " + ranY);
+                //Debug.Log("ooze " + ranX + ", " + ranY);
                 GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY, -3), Quaternion.identity);
                 numOoze--;
             }
             else if (!spawnPoint && numGhost > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
-                Debug.Log(ranX + ", " + ranY);
+                //Debug.Log(ranX + ", " + ranY);
                 GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY, -3), Quaternion.identity);
                 numGhost--;
             }

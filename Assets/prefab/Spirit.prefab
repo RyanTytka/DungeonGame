@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 854836142}
   m_Layer: 0
   m_Name: Spirit
-  m_TagString: Untagged
+  m_TagString: monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8453861d4c8c8fb48942afab377dac04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
 --- !u!50 &854836142
 Rigidbody2D:
   serializedVersion: 4
@@ -151,4 +152,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
