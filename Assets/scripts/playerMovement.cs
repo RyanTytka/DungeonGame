@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviour
     Animator animator;
     public Camera camera;
     public GameObject swordHitbox;
-    public Light highLight, lowLight;
+    public Light highLight, lowLight, itemLight;
     float timer = 1f;
 
     float horizontal;
@@ -92,8 +92,9 @@ public class playerMovement : MonoBehaviour
         //move player, camera, and light
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
         camera.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 20);
-        lowLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 1);
-        highLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 2);
+        lowLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, -5f);
+        highLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, -8f);
+        itemLight.transform.position = new Vector3(body.transform.position.x, body.transform.position.y, -8f);
 
         //aim player
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
@@ -104,15 +105,26 @@ public class playerMovement : MonoBehaviour
     //player takes damage when entering a monster's hitbox
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //contact with monster
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
             health--;
-            healthText.text = "health: " + health;
             damageBoostTimer = 2;
-            if (health <= 0)
-            {
-                gameOver();
-            }
+
+        }
+        //constact with spirit's attack
+        else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
+        {
+            health -= 2;
+            damageBoostTimer = 2;
+
+        }
+        //update health display
+        healthText.text = "health: " + health;
+        //check if player's died
+        if (health <= 0)
+        {
+            gameOver();
         }
 
         if (collision.gameObject.tag == "SwordNine")

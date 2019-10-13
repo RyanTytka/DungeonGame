@@ -9,6 +9,7 @@ TagManager:
   - exit
   - mimicTrigger
   - mimic
+  - Stick
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - player
   - monster
-  - 
+  - Item
   - 
   - 
   - 

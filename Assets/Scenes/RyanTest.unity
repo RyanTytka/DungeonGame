@@ -334,7 +334,11 @@ MonoBehaviour:
   highLight: {fileID: 2086213483}
   lowLight: {fileID: 2086213483}
   healthText: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  gameOverText: {fileID: 0}
   runSpeed: 3.5
+  swordsCollected: 0
+  tilemap: {fileID: 0}
 --- !u!4 &860944619
 Transform:
   m_ObjectHideFlags: 0

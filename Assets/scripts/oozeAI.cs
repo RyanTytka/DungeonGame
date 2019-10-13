@@ -33,7 +33,11 @@ public class oozeAI : MonoBehaviour
         float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
 
+        //prevent monster from being pushed by player
+        body.velocity = new Vector2(0, 0);
+
         //move monster
+        body.velocity = new Vector2(0, 0);
         if (flashTimer <= 0)
             transform.Translate(new Vector3(.015f, 0, 0));
 
