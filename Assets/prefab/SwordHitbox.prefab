@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9037913213901742960}
   - component: {fileID: 217525369873738327}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SwordHitbox
   m_TagString: Sword
   m_Icon: {fileID: 0}
