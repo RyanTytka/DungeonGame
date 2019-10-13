@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class monsterAI : MonoBehaviour
+public class oozeAI : MonoBehaviour
 {
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
     int health = 10;
+    int flashTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,16 @@ public class monsterAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponentInChildren<SpriteRenderer>().color == Color.red)
+        {
+            if (flashTimer > 5)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                flashTimer = 0;
+            }
+            else
+                flashTimer++;
+        }
     }
 
     private void FixedUpdate()
@@ -27,13 +37,13 @@ public class monsterAI : MonoBehaviour
         dir = new Vector3(0, 0, 0);
 
         if (target.position.x < transform.position.x)
-            dir += new Vector3(-.02f, 0, 0);
+            dir += new Vector3(-.015f, 0, 0);
         if (target.position.x > transform.position.x)
-            dir += new Vector3(.02f, 0, 0);
+            dir += new Vector3(.015f, 0, 0);
         if (target.position.y < transform.position.y)
-            dir += new Vector3(0, -.02f, 0);
+            dir += new Vector3(0, -.015f, 0);
         if (target.position.y > transform.position.y)
-            dir += new Vector3(0, .02f, 0);
+            dir += new Vector3(0, .015f, 0);
 
         body.velocity = new Vector2(0,0);
         transform.position += dir;
@@ -52,6 +62,8 @@ public class monsterAI : MonoBehaviour
             health -= 4;
             if(health <= 0)
                 Destroy(gameObject);
+            SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+            sr.color = Color.red;
         }
     }
 }
