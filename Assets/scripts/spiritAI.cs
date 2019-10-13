@@ -27,6 +27,9 @@ public class spiritAI : MonoBehaviour
     public GameObject spiritAttack;
     GameObject swing;
 
+    //monster flashes when gets hit
+    int flashTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,10 @@ public class spiritAI : MonoBehaviour
         {
             Destroy(swing);
         }
+
+        if (flashTimer == 15)
+            GetComponent<SpriteRenderer>().color = Color.white;
+        flashTimer--;
     }
 
     private void FixedUpdate()
@@ -102,8 +109,11 @@ public class spiritAI : MonoBehaviour
             body.velocity = new Vector2(0, 0);
             //prevent rotation by player
             //transform.rotation = Quaternion.Euler(0, 0, 0);
-            transform.position += dir;
+            if (flashTimer <= 0)
+                transform.position += dir;
         }
+
+
 
         //rotate monster
         Vector3 targetPos = target.position;
@@ -116,6 +126,11 @@ public class spiritAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
+            //kncokback
+            transform.Translate(new Vector3(-.4f, 0, 0));
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = Color.red;
+            flashTimer = 20;
             health -= 4;
             //should play death animation
             if (health <= 0)
