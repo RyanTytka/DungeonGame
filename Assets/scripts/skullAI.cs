@@ -7,6 +7,8 @@ public class skullAI : MonoBehaviour
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
+    public int health = 2, flashTimer = 0;
+    public float startDelay = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,14 @@ public class skullAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (flashTimer == 0)
+            GetComponent<SpriteRenderer>().color = Color.white;
+        flashTimer--;
 
+        //add delay bvefore it starts moving
+        if ((transform.position - target.position).magnitude < 8)
+            startDelay = 0;
+        startDelay = Mathf.Max(0,startDelay - Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -32,15 +41,21 @@ public class skullAI : MonoBehaviour
         body.velocity = new Vector2(0, 0);
 
         //move monster
-        transform.Translate(new Vector3(.03f, 0, 0));
+        if(startDelay == 0)
+            transform.Translate(new Vector3(.03f, 0, 0));
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Sword")
         {
-            Destroy(gameObject);
+            health--;
+            if(health <= 0 )
+                Destroy(gameObject);
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = Color.red;
+            flashTimer = 10;
         }
     }
 }
