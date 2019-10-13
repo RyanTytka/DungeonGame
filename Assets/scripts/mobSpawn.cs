@@ -66,13 +66,13 @@ public class mobSpawn : MonoBehaviour
             if (!spawnPoint && numOoze > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
-                GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY), Quaternion.identity);
+                GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY, -2.5f), Quaternion.identity);
                 numOoze--;
             }
             else if (!spawnPoint && numGhost > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
-                GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY), Quaternion.identity);
+                GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY, -2.5f), Quaternion.identity);
                 numGhost--;
             }
         }
