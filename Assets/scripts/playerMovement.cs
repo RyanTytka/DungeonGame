@@ -15,6 +15,9 @@ public class playerMovement : MonoBehaviour
     public Light highLight, lowLight, itemLight;
     float timer = 1f;
 
+    public Sprite playerStick;
+    int itemEquipped = 0;
+
     float horizontal;
     float vertical;
 
@@ -49,7 +52,7 @@ public class playerMovement : MonoBehaviour
         timer += Time.deltaTime;
 
         //swing sword
-        if (Input.GetMouseButton(0) && timer > 1f)
+        if (Input.GetMouseButton(0) && timer > 1f && itemEquipped > 0)
         {
             animator.SetTrigger("Attack");
 
@@ -124,7 +127,6 @@ public class playerMovement : MonoBehaviour
             health--;
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
-
         }
         if (health <= 0)
         {
@@ -140,6 +142,13 @@ public class playerMovement : MonoBehaviour
             {
                 activateExit();
             }
+        }
+
+        if(collision.gameObject.tag == "Stick")
+        {
+            itemEquipped = 1;
+            Destroy(collision.gameObject);
+            animator.SetInteger("item", 1);
         }
     }
 
