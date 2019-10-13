@@ -9,11 +9,13 @@ public class skullAI : MonoBehaviour
     Rigidbody2D body;
     public int health = 2, flashTimer = 0;
     public float startDelay = 10f;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -51,8 +53,8 @@ public class skullAI : MonoBehaviour
         if (collision.gameObject.tag == "Sword")
         {
             health--;
-            if(health <= 0 )
-                Destroy(gameObject);
+            if (health <= 0)
+                animator.SetTrigger("Death");
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = Color.red;
             flashTimer = 10;
