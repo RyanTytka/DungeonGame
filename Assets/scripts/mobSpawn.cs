@@ -5,9 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class mobSpawn : MonoBehaviour
 {
-    public GameObject monster;
+    public GameObject ooze;
+    public GameObject ghost;
     public GameObject pickup;
     public GameObject stick;
+    public GameObject sword;
+    public GameObject mimic;
 
     public GameObject wall;
 
@@ -20,9 +23,10 @@ public class mobSpawn : MonoBehaviour
         // Player Spawn 22, 32
         bounds = tilemap.cellBounds;
         allTiles = tilemap.GetTilesBlock(bounds);
-        spawnMonster(5);
+        //spawnMonster(5);
         //spawnPickup(5);
-        spawnStick();
+        //spawnStick();
+        spawnSwords();
     }
 
     // Update is called once per frame
@@ -31,12 +35,12 @@ public class mobSpawn : MonoBehaviour
 
     }
 
-    private void spawnMonster(int num)
+    private void spawnMonster(int numOoze, int numGhost)
     {
         int ranX;
         int ranY;
 
-        for (int i = 0; i < num; i++)
+        while (numOoze > 0 || numGhost > 0)
         {
             ranX = Random.Range(-13, 26);
             ranY = Random.Range(-36, 14);
@@ -44,32 +48,15 @@ public class mobSpawn : MonoBehaviour
             if (allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
-                GameObject monster2point0 = Instantiate(monster, new Vector3(ranX, ranY), Quaternion.identity);
+                GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY), Quaternion.identity);
+                numOoze--;
             }
-            else
+            else if (numGhost > 0)
             {
-                i--;
+                Debug.Log(ranX + ", " + ranY);
+                GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY), Quaternion.identity);
+                numGhost--;
             }
-            //if (ghost > 0)
-            //{
-            //    dungeon[ranNum1, ranNum2] = "M";
-            //    ghost--;
-            //}
-            //else if (tankMon > 0)
-            //{
-            //    dungeon[ranNum1, ranNum2] = "T";
-            //    tankMon--;
-            //}
-            //else if (fastMon > 0)
-            //{
-            //    dungeon[ranNum1, ranNum2] = "F";
-            //    fastMon--;
-            //}
-            //else
-            //{
-            //    dungeon[ranNum1, ranNum2] = "I";
-            //    numItem--;
-            //}
         }
     }
 
@@ -102,5 +89,37 @@ public class mobSpawn : MonoBehaviour
         ranNum = Random.Range(0, 6);
         
         GameObject starterStick = Instantiate(stick, positions[ranNum], Quaternion.identity);
+    }
+
+    private void spawnSwords()
+    { 
+        // Set Cords: 1(-4.5f, 9.0f)ReCh 2(3.5f, 9f)ReCh 3(16.5f, 10.5f)ReCh 4(23.5f, 1.0f)ReCh 5(19.5f, -12.5f)ReCh 6(15.5f, -13.0f)ReCh 7(18.5f, -25.5f)ReCh 8(11.5f, -26.5f)ReCh 9(2.5f, -29.0f)ReCh 10(-2.5f, -1.5f)ReCh 11(-.5f, -12.5f)ReCh 12(-3.5f, -18.5f)ReCh 13(4.5f, -12.5f)ReCh 14(-5.5f, -31.5f)Ch 15(15.5f, -31.5f)ReCh 16(14.5, -19.0f)ReCh
+        int ranNum;
+        int numSwords = 9;
+        int numMimic = 7;
+        Vector2 empty = new Vector2(0f, 0f);
+        Vector2[] positions = { new Vector2(-4.5f, 9.0f), new Vector2(3.5f, 9f), new Vector2(16.5f, 10.5f), new Vector2(23.5f, 1.0f), new Vector2(19.5f, -12.5f), new Vector2(15.5f, -13.0f), new Vector2(18.5f, -25.5f), new Vector2(11.5f, -26.5f), new Vector2(2.5f, -29.0f), new Vector2(-2.5f, -1.5f), new Vector2(-.5f, -12.5f), new Vector2(-3.5f, -18.5f), new Vector2(4.5f, -12.5f), new Vector2(-5.5f, -33.5f), new Vector2(15.5f, -31.5f), new Vector2(14.5f, -19.0f)};
+        ranNum = Random.Range(0, 16);
+
+        while (numSwords > 0)
+        {
+            ranNum = Random.Range(0, 16);
+            if (allTiles[(int)(positions[ranNum].x + 13) + (int)((positions[ranNum].y + 36) * bounds.size.x)].name == "floor" && positions[ranNum] != empty)
+            {
+                GameObject notFirstSword = Instantiate(sword, positions[ranNum], Quaternion.identity);
+                positions[ranNum] = empty;
+                numSwords--;
+            }
+        }
+        while (numMimic > 0)
+        {
+            ranNum = Random.Range(0, 16);
+            if (allTiles[(int)(positions[ranNum].x + 13) + (int)((positions[ranNum].y + 36) * bounds.size.x)].name == "floor" && positions[ranNum] != empty)
+            {
+                GameObject mimicmonster = Instantiate(mimic, positions[ranNum], Quaternion.identity);
+                positions[ranNum] = empty;
+                numMimic--;
+            }
+        }
     }
 }
