@@ -115,7 +115,7 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.tag == "SwordNine")
+        if (collision.gameObject.tag == "SwordNine")
         {
             swordsCollected++;
             Destroy(collision.gameObject);
