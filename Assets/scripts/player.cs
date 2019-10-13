@@ -40,7 +40,7 @@ public class player : MonoBehaviour
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemies);
         foreach (Collider2D enemy in enemiesToDamage)
         {
-            enemy.GetComponent<monsterAI>().health -= attackDamage;
+            //enemy.GetComponent<oozeAI>().health -= attackDamage;
         }
         attackCooldown = 1;
     }

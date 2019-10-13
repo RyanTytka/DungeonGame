@@ -17,7 +17,7 @@ public class map : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
         bounds = tilemap.cellBounds;
         allTiles = tilemap.GetTilesBlock(bounds);
-        Debug.Log(bounds);
+        Debug.Log(bounds.ToString());
         buildWalls();
     }
 
@@ -32,8 +32,12 @@ public class map : MonoBehaviour
                 {
                     if (tile.name == "wall")
                     {
-                        //Debug.Log("x:" + (x - 12.5f) + " y:" + y + " tile:" + tile.name);
-                        Instantiate(wall, new Vector3(x - 12.5f, y - 36, -2.5f), Quaternion.identity, wallsParent);
+                        //Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
+                        GameObject newWall = Instantiate(wall, new Vector3(x - 12.5f, y - 36, -2.5f), Quaternion.identity, wallsParent);
+                        if(newWall.transform.position == new Vector3(26.5f, -25, -2.5f) || newWall.transform.position == new Vector3(26.5f, -24, -2.5f))
+                        {
+                            newWall.tag = "exit";
+                        }
                     }
                 }
             }
