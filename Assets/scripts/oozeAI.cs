@@ -20,16 +20,9 @@ public class oozeAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponentInChildren<SpriteRenderer>().color == Color.red)
-        {
-            if (flashTimer > 5)
-            {
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
-                flashTimer = 0;
-            }
-            else
-                flashTimer++;
-        }
+        if(flashTimer == 15)
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        flashTimer--;
     }
 
     private void FixedUpdate()
@@ -46,7 +39,8 @@ public class oozeAI : MonoBehaviour
             dir += new Vector3(0, .015f, 0);
 
         body.velocity = new Vector2(0,0);
-        transform.position += dir;
+        if(flashTimer  <= 0)
+            transform.position += dir;
 
         //rotate monster
         Vector3 targetPos = target.position;
@@ -64,6 +58,7 @@ public class oozeAI : MonoBehaviour
                 Destroy(gameObject);
             SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
             sr.color = Color.red;
+            flashTimer = 20;
         }
     }
 }

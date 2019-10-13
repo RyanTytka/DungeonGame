@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class playerMovement : MonoBehaviour
 {
     Rigidbody2D body;
+    GameObject swing;
+    Animator animator;
     public Camera camera;
     public GameObject swordHitbox;
     public Light highLight, lowLight;
     float timer = 1f;
-    GameObject swing;
 
     float horizontal;
     float vertical;
@@ -25,6 +26,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,9 @@ public class playerMovement : MonoBehaviour
         //swing sword
         if (Input.GetMouseButton(0) && timer > 1f)
         {
-            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            animator.SetTrigger("Attack");
+
+            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,270));
             timer = 0f;
         }
 
@@ -64,7 +68,7 @@ public class playerMovement : MonoBehaviour
 
         //aim player
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
-        float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg + 180;
+        float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
     }
 

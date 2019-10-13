@@ -1,0 +1,280 @@
+fileFormatVersion: 2
+guid: e890eac036b97f64b9d8974b12fd15fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2042752846502885902
+    second: Player_Stick_Attack_0
+  - first:
+      213: -1335091028098505338
+    second: Player_Stick_Attack_1
+  - first:
+      213: 7178001539785380751
+    second: Player_Stick_Attack_2
+  - first:
+      213: -6636074725336647081
+    second: Player_Stick_Attack_3
+  - first:
+      213: -1038891127794564482
+    second: Player_Stick_Attack_4
+  - first:
+      213: 7637274332555620999
+    second: Player_Stick_Attack_5
+  - first:
+      213: 6474003540835733448
+    second: Player_Stick_Attack_6
+  - first:
+      213: -2450083453508546237
+    second: Player_Stick_Attack_7
+  - first:
+      213: 453991619437111066
+    second: Player_Stick_Attack_8
+  - first:
+      213: -7649083729411995930
+    second: Player_Stick_Attack_9
+  - first:
+      213: -7734527701666477363
+    second: Player_Stick_Attack_10
+  - first:
+      213: 7466616119613038366
+    second: Player_Stick_Attack_11
+  - first:
+      213: 7838335368061207008
+    second: Player_Stick_Attack_12
+  - first:
+      213: 5261022507187724368
+    second: Player_Stick_Attack_13
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Stick_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 97
+        width: 213
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0923c50b68e00f04fa09f7dfccc565e9
+      internalID: -1335091028098505338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Stick_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 116
+        width: 255
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa5c3ba6fc4e7b4eb9a76a2d547dc78
+      internalID: -6636074725336647081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Stick_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 114
+        width: 279
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2763cb537cf67f2449312868a878eedd
+      internalID: 7637274332555620999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Stick_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 114
+        width: 279
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d879f8c8b815f2946a713720f074a843
+      internalID: 453991619437111066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Stick_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 114
+        width: 256
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22674320c63c67248b04595ad16db825
+      internalID: -7734527701666477363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Stick_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 116
+        width: 244
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515577953ff8960448483ee3a465c248
+      internalID: 5261022507187724368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 70669454b8963074caa25c5b7c361bc9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
