@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class playerMovement : MonoBehaviour
 
     float horizontal;
     float vertical;
+
+    private int health = 10;
+    public Text healthText;
+    private float damageBoostTimer = 0;
 
     public float runSpeed = 20.0f;
 
@@ -37,10 +42,15 @@ public class playerMovement : MonoBehaviour
         }
 
         if(timer > .1f)
+        {
             Destroy(swing);
-
-
-        
+        }
+            
+        //timer for when the player can take damage
+        if (damageBoostTimer > 0)
+        {
+            damageBoostTimer -= Time.deltaTime;
+        }
     }
 
 
@@ -58,4 +68,14 @@ public class playerMovement : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
     }
 
+    //player takes damage when entering a monster's hitbox
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (damageBoostTimer <= 0)
+        {
+            health--;
+            healthText.text = "health: " + health;
+            damageBoostTimer = 2;
+        }
+    }
 }

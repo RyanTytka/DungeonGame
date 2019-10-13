@@ -5,8 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class map : MonoBehaviour
 {
-    public GameObject wall;
+    public GameObject cube;
     public Transform wallsParent;
+    public Material myMaterial;
 
     private Tilemap tilemap;
     private BoundsInt bounds;
@@ -17,8 +18,8 @@ public class map : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
         bounds = tilemap.cellBounds;
         allTiles = tilemap.GetTilesBlock(bounds);
-        Debug.Log(bounds);
-        buildWalls();
+
+        //buildWalls();
     }
 
     private void buildWalls()
@@ -28,13 +29,10 @@ public class map : MonoBehaviour
             for (int y = 0; y < bounds.size.y; y++)
             {
                 TileBase tile = allTiles[x + y * bounds.size.x];
-                if (tile != null)
+                if (tile != null && tile.name == "wall")
                 {
-                    if (tile.name == "wall")
-                    {
-                        //Debug.Log("x:" + (x - 12.5f) + " y:" + y + " tile:" + tile.name);
-                        Instantiate(wall, new Vector3(x - 12.5f, y - 36, -2.5f), Quaternion.identity, wallsParent);
-                    }
+                    Debug.Log("x:" + (x-12.5f) + " y:" + y + " tile:" + tile.name);
+                    GameObject newWall = Instantiate(cube, new Vector3(x-12.5f, y-5,-2.5f), Quaternion.identity, wallsParent);
                 }
             }
         }

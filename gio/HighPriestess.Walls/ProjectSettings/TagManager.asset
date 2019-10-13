@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Sword
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -14,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - player
-  - monster
+  - 
+  - 
   - 
   - 
   - 
@@ -39,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: floor
+    uniqueID: 3004562199
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
