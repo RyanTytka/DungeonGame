@@ -19234,7 +19234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster: {fileID: 794958444}
   pickup: {fileID: 0}
-  stick: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
+  stick: {fileID: 0}
   wall: {fileID: 315690226}
   tilemap: {fileID: 315690230}
 --- !u!4 &713694582
