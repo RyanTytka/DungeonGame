@@ -22,7 +22,7 @@ public class mobSpawn : MonoBehaviour
         allTiles = tilemap.GetTilesBlock(bounds);
         spawnMonster(5);
         //spawnPickup(5);
-        //spawnStick();
+        spawnStick();
     }
 
     // Update is called once per frame
@@ -101,6 +101,6 @@ public class mobSpawn : MonoBehaviour
 
         ranNum = Random.Range(0, 6);
         
-        GameObject starterStick = Instantiate(stick, positions[ranNum], Quaternion.identity);
+        GameObject starterStick = Instantiate(stick, new Vector3(positions[ranNum].x, positions[ranNum].y, -2.5f), Quaternion.identity);
     }
 }
