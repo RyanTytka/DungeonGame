@@ -19200,11 +19200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ooze: {fileID: 7124318014977628524, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce, type: 3}
   ghost: {fileID: 3986815693735204573, guid: 18a6c93a54f0d174880330383cb7e536, type: 3}
-  monster: {fileID: 7124318014977628524, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce, type: 3}
   pickup: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
-  stick: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
-  sword: {fileID: 3986815693735204573, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
-  mimic: {fileID: 5083163781159378673, guid: a544c7e7b22f4ad4cb0d14fabfe124c1, type: 3}
+  stick: {fileID: 7736506743167629158, guid: a00317c2e3c32274f9180db26c87f3d2, type: 3}
+  sword: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
+  mimic: {fileID: 3986815693735204573, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
   wall: {fileID: 315690226}
   tilemap: {fileID: 315690230}
 --- !u!4 &713694582
@@ -19221,12 +19220,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &770323901 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3545732260177319621, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1439292900}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &776930116
 GameObject:
   m_ObjectHideFlags: 0
@@ -19356,7 +19349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814951981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 315690227}
@@ -19495,6 +19488,7 @@ MonoBehaviour:
   highLight: {fileID: 141212967}
   lowLight: {fileID: 13146988}
   itemLight: {fileID: 1347240699}
+  playerStick: {fileID: 0}
   healthText: {fileID: 1291720556}
   gameOverScreen: {fileID: 1653270911}
   gameOverText: {fileID: 882543754}

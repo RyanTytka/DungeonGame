@@ -23,6 +23,10 @@ public class spiritAI : MonoBehaviour
     //monster starts game 'alive'
     private bool alive = true;
 
+    //attack hitbox
+    public GameObject spiritAttack;
+    GameObject swing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +43,14 @@ public class spiritAI : MonoBehaviour
         {
             //perform attack animation
             animator.SetTrigger("Attack");
+            //creating siwng
+            swing = Instantiate(spiritAttack, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
             //reset timer
             timer = 0f;
+        }
+        if (timer > 1.2f)
+        {
+            Destroy(swing);
         }
     }
 
