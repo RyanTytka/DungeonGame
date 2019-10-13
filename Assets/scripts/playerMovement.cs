@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {
@@ -8,10 +9,15 @@ public class playerMovement : MonoBehaviour
     public Camera camera;
     public GameObject swordHitbox;
     public Light highLight, lowLight;
-
+    float timer = 1f;
+    GameObject swing;
 
     float horizontal;
     float vertical;
+
+    private int health = 10;
+    public Text healthText;
+    private float damageBoostTimer = 0;
 
     public float runSpeed = 20.0f;
 
@@ -26,14 +32,25 @@ public class playerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        timer += Time.deltaTime;
 
         //swing sword
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && timer > 1f)
         {
-            Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            timer = 0f;
         }
 
-        
+        if(timer > .1f)
+        {
+            Destroy(swing);
+        }
+            
+        //timer for when the player can take damage
+        if (damageBoostTimer > 0)
+        {
+            damageBoostTimer -= Time.deltaTime;
+        }
     }
 
 
@@ -49,13 +66,16 @@ public class playerMovement : MonoBehaviour
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg + 180;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
-
-
-
     }
 
-        
-    
-
-
+    //player takes damage when entering a monster's hitbox
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (damageBoostTimer <= 0)
+        {
+            health--;
+            healthText.text = "health: " + health;
+            damageBoostTimer = 2;
+        }
+    }
 }
