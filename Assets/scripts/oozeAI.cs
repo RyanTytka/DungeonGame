@@ -11,11 +11,15 @@ public class oozeAI : MonoBehaviour
     public int health = 10;
     int flashTimer = 0;
 
+    //allows playing of animation
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,7 +57,7 @@ public class oozeAI : MonoBehaviour
 
             health -= 4;
             if (health <= 0)
-                Destroy(gameObject);
+                animator.SetTrigger("Death");
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = Color.red;
             flashTimer = 20;
