@@ -62,17 +62,16 @@ public class mobSpawn : MonoBehaviour
                     break;
                 }
             }
-
             if (!spawnPoint && numOoze > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
-                Debug.Log(ranX + ", " + ranY);
-                GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY, -2.5f), Quaternion.identity);
+                //Debug.Log("ooze " + ranX + ", " + ranY);
+                GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY, -3), Quaternion.identity);
                 numOoze--;
             }
             else if (!spawnPoint && numGhost > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
-                Debug.Log(ranX + ", " + ranY);
-                GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY, -2.5f), Quaternion.identity);
+                //Debug.Log(ranX + ", " + ranY);
+                GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY, -3), Quaternion.identity);
                 numGhost--;
             }
         }
@@ -90,7 +89,7 @@ public class mobSpawn : MonoBehaviour
             if (allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
-                GameObject pickupAgain = Instantiate(pickup, new Vector3(ranX, ranY), Quaternion.identity);
+                GameObject pickupAgain = Instantiate(pickup, new Vector3(ranX, ranY, -3), Quaternion.identity);
             }
             else
             {
@@ -102,11 +101,11 @@ public class mobSpawn : MonoBehaviour
     {
         // Set Cords: (4.5, -7.5) (3.5, -9.5) (14.5, -8.5) (11.5, -8.5) (4.5, -1.5) (0.5, -1.5)
         int ranNum;
-        Vector2[] positions = {new Vector2(4.5f, -7.5f), new Vector2(3.5f, -9.5f), new Vector2(14.5f, -8.5f), new Vector2(11.5f, -8.5f), new Vector2(4.5f, -1.5f), new Vector2(0.5f, -1.5f)};
+        Vector3[] positions = {new Vector3(4.5f, -7.5f, -3), new Vector3(3.5f, -9.5f, -3), new Vector3(14.5f, -8.5f, -3), new Vector3(11.5f, -8.5f, -3), new Vector3(4.5f, -1.5f, -3), new Vector3(0.5f, -1.5f, -3) };
 
         ranNum = Random.Range(0, 6);
         
-        GameObject starterStick = Instantiate(stick, new Vector3(positions[ranNum].x, positions[ranNum].y, -2.5f), Quaternion.identity);
+        GameObject starterStick = Instantiate(stick, new Vector3(positions[ranNum].x, positions[ranNum].y, -3), Quaternion.identity);
     }
 
     private void spawnSwords()
@@ -115,8 +114,8 @@ public class mobSpawn : MonoBehaviour
         int ranNum;
         int numSwords = 9;
         int numMimic = 7;
-        Vector3 empty = new Vector2(0f, 0f);
-        Vector3[] positions = { new Vector3(-4.5f, 9.0f, -3), new Vector3(3.5f, 9f, -3), new Vector3(16.5f, 10.5f, -3), new Vector3(23.5f, 1.0f, -3), new Vector3(19.5f, -12.5f, -3), new Vector3(15.5f, -13.0f, -3), new Vector3(18.5f, -25.5f, -3), new Vector3(11.5f, -26.5f, -3), new Vector3(2.5f, -29.0f, -3), new Vector3(-2.5f, -1.5f, -3), new Vector3(-.5f, -12.5f, -3), new Vector3(-3.5f, -18.5f, -3), new Vector3(4.5f, -12.5f, -3), new Vector3(-5.5f, -33.5f, -3), new Vector3(15.5f, -31.5f, -3), new Vector3(14.5f, -19.0f, -3)};
+        Vector3 empty = new Vector3(0f, 0f, -3);
+        Vector3[] positions = { new Vector3(-4.5f, 9.0f, -3), new Vector3(3.5f, 9f, -3), new Vector3(16.5f, 10.5f, -3), new Vector3(23.5f, 1.0f, -3), new Vector3(19.5f, -12.5f, -3), new Vector3(15.5f, -13.0f, -3), new Vector3(18.5f, -25.5f, -3), new Vector3(11.5f, -26.5f, -3), new Vector3(2.5f, -29.0f, -3), new Vector3(-2.5f, -1.5f, -3), new Vector3(-.5f, -12.5f), new Vector3(-3.5f, -18.5f, -3), new Vector3(4.5f, -12.5f, -3), new Vector3(-5.5f, -33.5f, -3), new Vector3(15.5f, -31.5f, -3), new Vector3(14.5f, -19.0f, -3) };
         ranNum = Random.Range(0, 16);
 
         while (numSwords > 0)

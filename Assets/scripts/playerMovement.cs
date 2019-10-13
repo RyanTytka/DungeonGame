@@ -24,6 +24,8 @@ public class playerMovement : MonoBehaviour
     private int health = 10;
     public Text healthText;
     private float damageBoostTimer = 0;
+    public GameObject healthParent;
+    private Image[] hearts;
 
     public Image gameOverScreen;
     public Text gameOverText;
@@ -39,6 +41,7 @@ public class playerMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hearts = healthParent.GetComponentsInChildren<Image>();
     }
 
     // Update is called once per frame
@@ -53,15 +56,15 @@ public class playerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
 
-            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,270));
+            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
             timer = 0f;
         }
 
-        if(timer > .1f)
+        if (timer > .1f)
         {
             Destroy(swing);
         }
-            
+
         //timer for when the player can take damage
         if (damageBoostTimer > 0)
         {
@@ -83,7 +86,7 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        if(playerDied && Input.anyKeyDown)
+        if (playerDied && Input.anyKeyDown)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -106,35 +109,36 @@ public class playerMovement : MonoBehaviour
     }
 
     //player takes damage when entering a monster's hitbox
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(hearts.Length);
         //contact with monster
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
             health--;
+            hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
-
         }
-        //constact with spirit's attack
         else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
         {
             health --;
+            hearts[health].color = new Color(1, 1, 1, 0);
+            health--;
+            hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
-
         }
-        //update health display
-        healthText.text = "health: " + health;
-        //check if player's died
         if (health <= 0)
         {
             gameOver();
         }
 
+
         if (collision.gameObject.tag == "SwordNine")
         {
             swordsCollected++;
             Destroy(collision.gameObject);
-            if(swordsCollected == 8)
+            if (swordsCollected == 8)
             {
                 activateExit();
             }
@@ -162,9 +166,9 @@ public class playerMovement : MonoBehaviour
     //show a game over screen and tell the player to press a button or something to try again
     private void gameOver()
     {
-        gameOverScreen.color = new Color(0,0,0,1);
-        gameOverText.color = new Color(1,1,1,1);
-        healthText.color = new Color(1,1,1,0);
+        gameOverScreen.color = new Color(0, 0, 0, 1);
+        gameOverText.color = new Color(1, 1, 1, 1);
+        healthText.color = new Color(1, 1, 1, 0);
         playerDied = true;
     }
 }
