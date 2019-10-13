@@ -21,6 +21,9 @@ public class playerMovement : MonoBehaviour
     public Text healthText;
     private float damageBoostTimer = 0;
 
+    public Image gameOverScreen;
+    public Text gameOverText;
+
     public float runSpeed = 20.0f;
 
     public int swordsCollected = 0;
@@ -129,6 +132,8 @@ public class playerMovement : MonoBehaviour
     //show a game over screen and tell the player to press a button or something to try again
     private void gameOver()
     {
-        
+        gameOverScreen.color = new Color(0,0,0,1);
+        gameOverText.color = new Color(1,1,1,1);
+        healthText.color = new Color(1,1,1,0);
     }
 }
