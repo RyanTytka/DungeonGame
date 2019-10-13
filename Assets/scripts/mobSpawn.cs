@@ -22,7 +22,7 @@ public class mobSpawn : MonoBehaviour
         allTiles = tilemap.GetTilesBlock(bounds);
         spawnMonster(5);
         //spawnPickup(5);
-        spawnStick();
+        //spawnStick();
     }
 
     // Update is called once per frame
@@ -84,7 +84,7 @@ public class mobSpawn : MonoBehaviour
 
             if (allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
-                Debug.Log(ranX + ", " + ranY);
+                //Debug.Log(ranX + ", " + ranY);
                 GameObject pickupAgain = Instantiate(pickup, new Vector3(ranX, ranY), Quaternion.identity);
             }
             else

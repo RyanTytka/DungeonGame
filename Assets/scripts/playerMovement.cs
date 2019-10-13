@@ -22,6 +22,8 @@ public class playerMovement : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
+    public int swordsCollected = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,6 +102,21 @@ public class playerMovement : MonoBehaviour
                 gameOver();
             }
         }
+
+        if(collision.gameObject.tag == "SwordNine")
+        {
+            swordsCollected++;
+            Destroy(collision.gameObject);
+            if(swordsCollected == 8)
+            {
+                activateExit();
+            }
+        }
+    }
+
+    private void activateExit()
+    {
+
     }
 
     //show a game over screen and tell the player to press a button or something to try again
