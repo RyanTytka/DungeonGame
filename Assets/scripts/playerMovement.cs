@@ -118,7 +118,7 @@ public class playerMovement : MonoBehaviour
         //constact with spirit's attack
         else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
         {
-            health -= 2;
+            health --;
             damageBoostTimer = 2;
 
         }
