@@ -54,10 +54,20 @@ public class skullAI : MonoBehaviour
         {
             health--;
             if (health <= 0)
+            {
                 animator.SetTrigger("Death");
+                //Destroy(gameObject);
+                //Destroy(GetComponent<Collider2D>());
+                Invoke("DestroyThis", .5f);
+            }
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = Color.red;
             flashTimer = 10;
         }
+    }
+
+    private void DestroyThis()
+    {
+        Destroy(gameObject);
     }
 }
