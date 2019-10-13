@@ -44,7 +44,7 @@ public class mobSpawn : MonoBehaviour
             if (allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
-                GameObject monster2point0 = Instantiate(monster, new Vector3(ranX, ranY), Quaternion.identity);
+                GameObject monster2point0 = Instantiate(monster, new Vector3(ranX, ranY, -2.5f), Quaternion.identity);
             }
             else
             {
