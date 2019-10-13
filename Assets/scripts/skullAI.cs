@@ -28,6 +28,9 @@ public class skullAI : MonoBehaviour
         float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
 
+        //prevent monster from being pushed by player
+        body.velocity = new Vector2(0, 0);
+
         //move monster
         transform.Translate(new Vector3(.03f, 0, 0));
     }

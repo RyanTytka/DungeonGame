@@ -104,18 +104,29 @@ public class playerMovement : MonoBehaviour
     //player takes damage when entering a monster's hitbox
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //contact with monster
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
             health--;
-            healthText.text = "health: " + health;
             damageBoostTimer = 2;
-            if (health <= 0)
-            {
-                gameOver();
-            }
+
+        }
+        //constact with spirit's attack
+        else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
+        {
+            health -= 2;
+            damageBoostTimer = 2;
+
+        }
+        //update health display
+        healthText.text = "health: " + health;
+        //check if player's died
+        if (health <= 0)
+        {
+            gameOver();
         }
 
-        if(collision.gameObject.tag == "SwordNine")
+        if (collision.gameObject.tag == "SwordNine")
         {
             swordsCollected++;
             Destroy(collision.gameObject);

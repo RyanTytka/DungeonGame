@@ -9,7 +9,7 @@ public class spiritAI : MonoBehaviour
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
-    int health = 10;
+    public int health = 10;
 
     //Animator field to allow attack and death animation
     Animator animator;
