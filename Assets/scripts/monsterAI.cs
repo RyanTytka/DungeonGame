@@ -7,7 +7,7 @@ public class monsterAI : MonoBehaviour
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
-    int health = 10;
+    public int health = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +49,7 @@ public class monsterAI : MonoBehaviour
     {
         if(collision.gameObject.tag == "Sword")
         {
+            Destroy(gameObject);
             health -= 4;
             if(health <= 0)
                 Destroy(gameObject);
