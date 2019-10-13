@@ -38,6 +38,7 @@ public class playerMovement : MonoBehaviour
         if (Input.GetMouseButton(0) && timer > 1f)
         {
             swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            swing.tag = "Sword";
             timer = 0f;
         }
 
@@ -86,7 +87,7 @@ public class playerMovement : MonoBehaviour
     //player takes damage when entering a monster's hitbox
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (damageBoostTimer <= 0)
+        if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
             health--;
             healthText.text = "health: " + health;

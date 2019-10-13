@@ -9,6 +9,7 @@ public class oozeAI : MonoBehaviour
     Rigidbody2D body;
     public int health = 10;
     int flashTimer = 0;
+    float damageTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -52,15 +53,18 @@ public class oozeAI : MonoBehaviour
         Vector3 targetPos = target.position;
         float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
+
+        damageTimer -= Time.fixedDeltaTime;
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Sword")
+        if(collision.gameObject.tag == "Sword" && damageTimer <= 0)
         {
             health -= 4;
-            if(health <= 0)
+            damageTimer = .1f;
+            if (health <= 0)
                 Destroy(gameObject);
             SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
             sr.color = Color.red;
