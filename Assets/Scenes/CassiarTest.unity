@@ -195,6 +195,8 @@ MonoBehaviour:
   lowLight: {fileID: 853708862}
   healthText: {fileID: 0}
   runSpeed: 3.5
+  swordsCollected: 0
+  tilemap: {fileID: 0}
 --- !u!4 &123338573
 Transform:
   m_ObjectHideFlags: 0
