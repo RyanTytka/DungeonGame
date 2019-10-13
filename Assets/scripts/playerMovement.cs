@@ -14,13 +14,15 @@ public class playerMovement : MonoBehaviour
     public GameObject swordHitbox;
     public Light highLight, lowLight, itemLight;
     float timer = 1f;
-
+    
     float horizontal;
     float vertical;
 
     private int health = 10;
     public Text healthText;
     private float damageBoostTimer = 0;
+    public GameObject healthParent;
+    private SpriteRenderer[] hearts; 
 
     public Image gameOverScreen;
     public Text gameOverText;
@@ -36,6 +38,7 @@ public class playerMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hearts = healthParent.GetComponentsInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -109,22 +112,12 @@ public class playerMovement : MonoBehaviour
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
             health--;
+            
             damageBoostTimer = 2;
-
-        }
-        //constact with spirit's attack
-        else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
-        {
-            health -= 2;
-            damageBoostTimer = 2;
-
-        }
-        //update health display
-        healthText.text = "health: " + health;
-        //check if player's died
-        if (health <= 0)
-        {
-            gameOver();
+            if (health <= 0)
+            {
+                gameOver();
+            }
         }
 
         if (collision.gameObject.tag == "SwordNine")
