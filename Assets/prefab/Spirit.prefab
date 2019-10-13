@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7251421744514496287}
   - component: {fileID: 7221664580679238843}
   - component: {fileID: 3930706144423743506}
-  - component: {fileID: 5734216282471341819}
+  - component: {fileID: 364121648}
+  - component: {fileID: 854836142}
   m_Layer: 0
   m_Name: Spirit
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3986815693735204573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0793946, y: 0.52165, z: -8.975629}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,7 +119,7 @@ CircleCollider2D:
   m_Offset: {x: 0.05, y: 0.02579841}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!114 &5734216282471341819
+--- !u!114 &364121648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,6 +128,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 3986815693735204573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6f18426bb34d70429664549c98370e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 8453861d4c8c8fb48942afab377dac04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &854836142
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986815693735204573}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 4
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
