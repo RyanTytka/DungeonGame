@@ -8,6 +8,8 @@ public class monsterAI : MonoBehaviour
     Vector3 dir;
     Rigidbody2D body;
 
+    public int health = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,8 @@ public class monsterAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Sword")
+        {
             Destroy(gameObject);
+        }
     }
 }

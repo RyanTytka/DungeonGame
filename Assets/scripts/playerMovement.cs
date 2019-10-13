@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class playerMovement : MonoBehaviour
     public GameObject swordHitbox;
     public Light highLight, lowLight;
 
-
     float horizontal;
     float vertical;
+
+    private int health = 10;
+    public Text healthText;
+    private float damageBoostTimer = 0;
 
     public float runSpeed = 20.0f;
 
@@ -28,12 +32,15 @@ public class playerMovement : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         //swing sword
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0,0,90));
+            Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 90));
         }
 
-        
+        if (damageBoostTimer > 0)
+        {
+            damageBoostTimer -= Time.deltaTime;
+        }
     }
 
 
@@ -49,13 +56,15 @@ public class playerMovement : MonoBehaviour
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg + 180;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
-
-
-
     }
 
-        
-    
-
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (damageBoostTimer <= 0)
+        {
+            health--;
+            healthText.text = "health: " + health;
+            damageBoostTimer = 2;
+        }
+    }
 }
