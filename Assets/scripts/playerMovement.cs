@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class playerMovement : MonoBehaviour
 
     public Image gameOverScreen;
     public Text gameOverText;
+    private bool playerDied = false;
 
     public float runSpeed = 20.0f;
 
@@ -77,6 +79,11 @@ public class playerMovement : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().material.color = c;
             }
         }
+
+        if(playerDied && Input.anyKeyDown)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 
@@ -119,6 +126,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    //open up the exit
     private void activateExit()
     {
         GameObject[] exit = GameObject.FindGameObjectsWithTag("exit");
@@ -135,5 +143,6 @@ public class playerMovement : MonoBehaviour
         gameOverScreen.color = new Color(0,0,0,1);
         gameOverText.color = new Color(1,1,1,1);
         healthText.color = new Color(1,1,1,0);
+        playerDied = true;
     }
 }
