@@ -47,7 +47,7 @@ public class spiritAI : MonoBehaviour
             //perform attack animation
             animator.SetTrigger("Attack");
             //creating siwng
-            swing = Instantiate(spiritAttack, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
+            //swing = Instantiate(spiritAttack, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
             //reset timer
             timer = 0f;
         }
