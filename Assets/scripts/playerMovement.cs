@@ -139,7 +139,7 @@ public class playerMovement : MonoBehaviour
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
         }
-        else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
+        if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
         {
             health --;
             hearts[health].color = new Color(1, 1, 1, 0);
