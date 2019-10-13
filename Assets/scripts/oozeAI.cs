@@ -37,6 +37,7 @@ public class oozeAI : MonoBehaviour
         body.velocity = new Vector2(0, 0);
 
         //move monster
+        body.velocity = new Vector2(0, 0);
         if (flashTimer <= 0)
             transform.Translate(new Vector3(.015f, 0, 0));
 
