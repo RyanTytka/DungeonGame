@@ -19106,9 +19106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d50405b05f44042b59ccf27ed4ed46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 770323895}
+  ooze: {fileID: 7124318014977628524, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce, type: 3}
+  ghost: {fileID: 3986815693735204573, guid: 18a6c93a54f0d174880330383cb7e536, type: 3}
   pickup: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
-  stick: {fileID: 0}
+  stick: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
+  sword: {fileID: 3986815693735204573, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
+  mimic: {fileID: 5083163781159378673, guid: a544c7e7b22f4ad4cb0d14fabfe124c1, type: 3}
   wall: {fileID: 315690226}
   tilemap: {fileID: 315690230}
 --- !u!4 &713694582
@@ -19125,12 +19128,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &770323895 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7124318014977628524, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1439292900}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &770323901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3545732260177319621, guid: 6dc1dd6b895b56646ac72f77b9b7a2ce,

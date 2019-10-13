@@ -20,13 +20,13 @@ public class mobSpawn : MonoBehaviour
 
     void Start()
     {
-        // Player Spawn 22, 32
+        // Player Spawn 8.5, -4.5
         bounds = tilemap.cellBounds;
         allTiles = tilemap.GetTilesBlock(bounds);
-        //spawnMonster(5);
-        //spawnPickup(5);
-        //spawnStick();
         spawnSwords();
+        spawnStick();
+        spawnMonster(10, 5);
+        spawnPickup(5);
     }
 
     // Update is called once per frame
@@ -37,21 +37,39 @@ public class mobSpawn : MonoBehaviour
 
     private void spawnMonster(int numOoze, int numGhost)
     {
+        // Player Spawn Area: (8.5, -7) (6.5, -6) (7.5, -6) (8.5, -6) (9.5, -6) (10.5, -6)
+        //                    (6.5, -5) (7.5, -5) (8.5, -5) (9.5, -5) (10.5, -5)
+        //                    (6.5, -4) (7.5, -4) (8.5, -4) (9.5, -4) (10.5, -4)
+        //                    (6.5, -3) (7.5, -3) (8.5, -3) (9.5, -3) (10.5, -3)
+
         int ranX;
         int ranY;
+        bool spawnPoint = false;
+        double[] spawnPointsX = { 8.5, 6.5, 7.5, 8.5, 9.5, 10.5, 6.5, 7.5, 8.5, 9.5, 10.5, 6.5, 7.5, 8.5, 9.5, 10.5, 6.5, 7.5, 8.5, 9.5, 10.5};
+        double[] spawnPointsY = { -7, -6, -6, -6, -6, -6, -5, -5, -5, -5, -5, -4, -4, -4, -4, -4, -3, -3, -3, -3, -3};
 
         while (numOoze > 0 || numGhost > 0)
         {
+            spawnPoint = false;
             ranX = Random.Range(-13, 26);
             ranY = Random.Range(-36, 14);
 
-            if (allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
+            for (int i = 0; i < spawnPointsX.Length; i++)
+            {
+                if (ranX + 0.5 == spawnPointsX[i] && ranY == spawnPointsY[i])
+                {
+                    spawnPoint = true;
+                    break;
+                }
+            }
+
+            if (!spawnPoint && numOoze > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
                 GameObject monster = Instantiate(ooze, new Vector3(ranX, ranY), Quaternion.identity);
                 numOoze--;
             }
-            else if (numGhost > 0)
+            else if (!spawnPoint && numGhost > 0 && allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
                 Debug.Log(ranX + ", " + ranY);
                 GameObject monster = Instantiate(ghost, new Vector3(ranX, ranY), Quaternion.identity);
