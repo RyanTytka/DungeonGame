@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class playerMovement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class playerMovement : MonoBehaviour
     public float runSpeed = 20.0f;
 
     public int swordsCollected = 0;
+    public Tilemap tilemap;
 
     // Start is called before the first frame update
     void Start()
@@ -116,7 +118,12 @@ public class playerMovement : MonoBehaviour
 
     private void activateExit()
     {
-
+        GameObject[] exit = GameObject.FindGameObjectsWithTag("exit");
+        foreach (GameObject wall in exit)
+        {
+            tilemap.SetTile(tilemap.WorldToCell(wall.transform.position), null);
+            Destroy(wall);
+        }
     }
 
     //show a game over screen and tell the player to press a button or something to try again

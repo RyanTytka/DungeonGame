@@ -4809,8 +4809,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 26, y: -25, z: 0}
     second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -5169,8 +5169,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 26, y: -24, z: 0}
     second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -18858,14 +18858,14 @@ Tilemap:
       m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1120
+  - m_RefCount: 1118
     m_Data: {fileID: 11400000, guid: 32a6b5d5cbf79724e84306120266fe60, type: 2}
-  - m_RefCount: 920
+  - m_RefCount: 922
     m_Data: {fileID: 11400000, guid: af629559d7a02bd4b9bd6baac552d34c, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1120
+  - m_RefCount: 1118
     m_Data: {fileID: 21300000, guid: c0cd24c8bdb1eb84fa79d7a90afead9c, type: 3}
-  - m_RefCount: 920
+  - m_RefCount: 922
     m_Data: {fileID: 21300000, guid: 6bd9c7df001778d44af5ff32186b1792, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 2040
@@ -19036,7 +19036,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 794958448}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &435167578
 CircleCollider2D:
@@ -19451,6 +19451,8 @@ MonoBehaviour:
   lowLight: {fileID: 13146988}
   healthText: {fileID: 1291720556}
   runSpeed: 2.5
+  swordsCollected: 0
+  tilemap: {fileID: 315690230}
 --- !u!58 &1286359770
 CircleCollider2D:
   m_ObjectHideFlags: 0
