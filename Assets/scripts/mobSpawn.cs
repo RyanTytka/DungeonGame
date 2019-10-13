@@ -117,8 +117,26 @@ public class mobSpawn : MonoBehaviour
             if (allTiles[(int)(positions[ranNum].x + 13) + (int)((positions[ranNum].y + 36) * bounds.size.x)].name == "floor" && positions[ranNum] != empty)
             {
                 GameObject mimicmonster = Instantiate(mimic, positions[ranNum], Quaternion.identity);
+                mimicmonster.tag = "mimic";
                 positions[ranNum] = empty;
                 numMimic--;
+            }
+        }
+
+        GameObject[] mimicTriggers = GameObject.FindGameObjectsWithTag("mimicTrigger");
+        GameObject[] mimicmonsters = GameObject.FindGameObjectsWithTag("mimic");
+        for (int i = 0; i < mimicmonsters.Length; i++)
+        {
+            for(int j = 0; j < mimicTriggers.Length; j++)
+            {
+                string mimicStr = mimicmonsters[i].transform.position.ToString();
+                string triggerStr = mimicTriggers[j].name.Substring(0, mimicTriggers[j].name.IndexOf("_")) + ", 0.0";
+
+                if (mimicStr.Substring(1, mimicStr.Length - 2) == triggerStr)
+                {
+                    //Debug.Log(mimicStr.Substring(1, mimicStr.Length - 2) + "==" + triggerStr);
+                    mimicTriggers[j].GetComponent<BoxCollider2D>().enabled = true;
+                }
             }
         }
     }
