@@ -198,7 +198,7 @@ public class playerMovement : MonoBehaviour
             collision.gameObject.tag = "SwordNineEmpty";
             swordsCollected++;
             WeaponCount.text = "Weapons Collected: " + swordsCollected;
-            if (swordsCollected >= 8)
+            if (swordsCollected > 8)
             {
                 activateExit();
             }
