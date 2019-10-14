@@ -12,6 +12,7 @@ TagManager:
   - Stick
   - winZone
   - GoodStatue
+  - SwordNine
   layers:
   - Default
   - TransparentFX

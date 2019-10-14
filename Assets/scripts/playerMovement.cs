@@ -14,6 +14,8 @@ public class playerMovement : MonoBehaviour
     public GameObject swordHitbox, stickHitbox;
     public Light highLight, lowLight, itemLight;
     float timer = 1f;
+    float attackSpeed = 0f;
+    public Text WeaponCount;
 
     public Sprite playerStick;
     int itemEquipped = 0;
@@ -34,6 +36,7 @@ public class playerMovement : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
+    public Sprite empty;
     public int swordsCollected = 0;
     public Tilemap tilemap;
 
@@ -62,10 +65,10 @@ public class playerMovement : MonoBehaviour
             else
                 swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
 
-            timer = 0f;
+            timer = attackSpeed;
         }
 
-        if (timer > .1f)
+        if (timer > .1f + attackSpeed)
         {
             Destroy(swing);
         }
@@ -127,16 +130,29 @@ public class playerMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "Stick")
         {
-            itemEquipped = 1;
             Destroy(collision.gameObject);
-            animator.SetInteger("item", 1);
+            if (itemEquipped == 0)
+            {
+                itemEquipped = 1;
+                animator.SetInteger("item", 1);
+            }
         }
         if (collision.gameObject.tag == "SwordNine")
         {
             itemEquipped = 2;
+            attackSpeed = .2f;
             //Destroy(collision.gameObject);
+            SpriteRenderer sr = collision.GetComponent<SpriteRenderer>();
+            sr.sprite = empty;
             animator.SetInteger("item", 2);
             attackDamage = 2;
+            swordsCollected++;
+            WeaponCount.text = "Weapons Collected: " + swordsCollected;
+            if (swordsCollected == 8)
+            {
+                activateExit();
+            }
+            
         }
     }
 
@@ -164,15 +180,7 @@ public class playerMovement : MonoBehaviour
         }
 
 
-        if (collision.gameObject.tag == "SwordNine")
-        {
-            swordsCollected++;
-            //Destroy(collision.gameObject);
-            if (swordsCollected == 8)
-            {
-                activateExit();
-            }
-        }
+
 
         if(collision.gameObject.tag == "winZone")
         {
