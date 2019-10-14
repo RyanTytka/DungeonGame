@@ -41,12 +41,6 @@ public class oozeAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //move through walls if far enough away
-        if (Mathf.Abs((target.position - transform.position).x) > 8 || Mathf.Abs((target.position - transform.position).y) > 6)
-            gameObject.layer = 11;
-        else
-            gameObject.layer = 9;
-
         //rotate monster
         Vector3 targetPos = target.position;
         float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
