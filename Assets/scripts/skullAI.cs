@@ -14,12 +14,16 @@ public class skullAI : MonoBehaviour
     //is monster alive
     private bool alive = true;
 
+    //playing sound
+    private AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,9 +59,9 @@ public class skullAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
-            GameObject player = GameObject.Find("player");
-            playerMovement script = player.GetComponent<playerMovement>();
-            health -= script.attackDamage;
+            health--;
+            //plays skull crack sound
+            source.Play();
             //all objects destroy themselves at the end of the death animation
             if (health <= 0)
             {
@@ -65,6 +69,7 @@ public class skullAI : MonoBehaviour
                 animator.SetTrigger("Death");
                 //Destroy(gameObject);
                 //Destroy(GetComponent<Collider2D>());
+                //play death sound
                 Invoke("DestroyThis", .5f);
             }
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
