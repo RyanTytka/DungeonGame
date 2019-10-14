@@ -183,6 +183,8 @@ public class playerMovement : MonoBehaviour
         //contact with monster
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
+            //play oof
+            GetComponent<MoreAudioClips>().PlayClip(0);
             health--;
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
