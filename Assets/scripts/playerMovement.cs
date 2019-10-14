@@ -21,7 +21,8 @@ public class playerMovement : MonoBehaviour
     private float time;
     private string minLevel;
     private string secLevel;
-
+    public Text weaponsText;
+    private float timeExitSpawn = 0;
 
     public Sprite playerStick;
     int itemEquipped = 0;
@@ -132,7 +133,7 @@ public class playerMovement : MonoBehaviour
         float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
 
-        if(Time.timeSinceLevelLoad > 1200)
+        if(time > 1200)
         {
             gameOver();
         }
@@ -148,6 +149,15 @@ public class playerMovement : MonoBehaviour
             secLevel = "0" + secLevel;
         }
         timeText.text = minLevel + ":" + secLevel;
+        time += Time.fixedDeltaTime;
+
+        if(timeExitSpawn != 0)
+        {
+            if (time - timeExitSpawn > 3)
+            {
+                weaponsText.text = "";
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -248,6 +258,8 @@ public class playerMovement : MonoBehaviour
         {
             tilemap.SetTile(tilemap.WorldToCell(wall.transform.position), null);
             Destroy(wall);
+            weaponsText.text = "You have collected all the weapons \n Find the exit";
+            timeExitSpawn = time;
         }
     }
 
