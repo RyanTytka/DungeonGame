@@ -167,7 +167,7 @@ public class playerMovement : MonoBehaviour
         if (collision.gameObject.tag == "SwordNine")
         {
             swordsCollected++;
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             if (swordsCollected == 8)
             {
                 activateExit();
