@@ -40,12 +40,16 @@ public class playerMovement : MonoBehaviour
     public int swordsCollected = 0;
     public Tilemap tilemap;
 
+    //loop sound time
+    private float loopTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         hearts = healthParent.GetComponentsInChildren<Image>();
+        //GetComponent<MoreAudioClips>().PlayClip(0);
     }
 
     // Update is called once per frame
@@ -59,7 +63,12 @@ public class playerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         timer += Time.deltaTime;
-
+        loopTimer += Time.deltaTime;
+        //if (loopTimer >= 30f)
+        //{
+        //    GetComponent<MoreAudioClips>().PlayClip(0);
+        //    loopTimer = 0f;
+        //}
         //swing sword
         if (Input.GetMouseButton(0) && timer > 1f && itemEquipped > 0)
         {
@@ -122,6 +131,9 @@ public class playerMovement : MonoBehaviour
     {
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster" && !playerDied)
         {
+            //play oof
+
+            GetComponent<MoreAudioClips>().PlayClip(0);
             health--;
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
