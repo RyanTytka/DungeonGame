@@ -26,7 +26,7 @@ public class mobSpawn : MonoBehaviour
         spawnSwords();
         spawnStick();
         spawnMonster(10, 5);
-        spawnPickup(5);
+        //spawnPickup(5);
     }
 
     // Update is called once per frame

@@ -10,6 +10,7 @@ TagManager:
   - mimicTrigger
   - mimic
   - Stick
+  - GoodStatue
   layers:
   - Default
   - TransparentFX

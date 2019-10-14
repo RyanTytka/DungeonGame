@@ -19997,7 +19997,7 @@ MonoBehaviour:
   ghost: {fileID: 3986815693735204573, guid: 18a6c93a54f0d174880330383cb7e536, type: 3}
   pickup: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
   stick: {fileID: 7736506743167629158, guid: a00317c2e3c32274f9180db26c87f3d2, type: 3}
-  sword: {fileID: 4897900542968293785, guid: 66a6073d5e3abb84a979ed9917dd0509, type: 3}
+  sword: {fileID: 7348887791762639052, guid: 53c9c7d7352670745a7f3259a6d67105, type: 3}
   mimic: {fileID: 3986815693735204573, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
   wall: {fileID: 315690226}
   tilemap: {fileID: 315690230}
