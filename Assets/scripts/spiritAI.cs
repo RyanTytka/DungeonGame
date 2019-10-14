@@ -116,7 +116,7 @@ public class spiritAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
-            health -= 4;
+            health -= 40;
             //should play death animation
             if (health <= 0)
             {
