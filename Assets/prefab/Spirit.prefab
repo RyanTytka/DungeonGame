@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 364121648}
   - component: {fileID: 854836142}
   - component: {fileID: 2001670103}
+  - component: {fileID: 6542681294461759646}
   m_Layer: 9
   m_Name: Spirit
   m_TagString: monster
@@ -252,3 +253,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6542681294461759646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986815693735204573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6851baec11ea16b4188dc0ca6e4d644f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 53bfc91035c11244f902c1b384d17c83, type: 3}
+  - {fileID: 8300000, guid: 5057b836e6f4c8f4989e6e0e4841bbba, type: 3}
+  volumes:
+  - 1
+  - 1
