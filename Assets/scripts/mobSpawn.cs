@@ -133,7 +133,7 @@ public class mobSpawn : MonoBehaviour
             ranNum = Random.Range(0, 16);
             if (allTiles[(int)(positions[ranNum].x + 13) + (int)((positions[ranNum].y + 36) * bounds.size.x)].name == "floor" && positions[ranNum] != empty)
             {
-                GameObject mimicmonster = Instantiate(mimic, positions[ranNum], Quaternion.identity);
+                GameObject mimicmonster = Instantiate(sword, positions[ranNum], Quaternion.identity);
                 mimicmonster.tag = "mimic";
                 positions[ranNum] = empty;
                 numMimic--;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3930706144423743506}
   - component: {fileID: 364121648}
   - component: {fileID: 854836142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spirit
   m_TagString: monster
   m_Icon: {fileID: 0}
