@@ -161,6 +161,11 @@ public class playerMovement : MonoBehaviour
                 activateExit();
             }
         }
+
+        if(collision.gameObject.tag == "winZone")
+        {
+            win();
+        }
     }
 
     //open up the exit
@@ -180,6 +185,14 @@ public class playerMovement : MonoBehaviour
         gameOverScreen.color = new Color(0, 0, 0, 1);
         gameOverText.color = new Color(1, 1, 1, 1);
         healthText.color = new Color(1, 1, 1, 0);
+        playerDied = true;
+    }
+
+    private void win()
+    {
+        gameOverScreen.color = new Color(0,0,0,1);
+        gameOverText.text = "You Win";
+        gameOverText.color = new Color(1,1,1,1);
         playerDied = true;
     }
 }
