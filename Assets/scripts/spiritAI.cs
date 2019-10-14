@@ -9,6 +9,8 @@ public class spiritAI : MonoBehaviour
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
+    bool intangible = false;
+    float intanTimer = 0f;
     public int health = 5;
 
     //Animator field to allow attack and death animation
@@ -63,6 +65,7 @@ public class spiritAI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        intanTimer += Time.deltaTime;
         if (alive)
         {
             dir = new Vector3(0, 0, 0);
@@ -111,6 +114,20 @@ public class spiritAI : MonoBehaviour
             //transform.rotation = Quaternion.Euler(0, 0, 0);
             if (flashTimer <= 0)
                 transform.position += dir;
+
+            if (intanTimer >= 5f)
+            {
+                if(intangible)
+                {
+                    gameObject.layer = 9;
+                }
+                else
+                {
+                    gameObject.layer = 11;
+                }
+                intangible = !intangible;
+                intanTimer = 0;
+            }
         }
 
 
@@ -127,7 +144,7 @@ public class spiritAI : MonoBehaviour
         if (collision.gameObject.tag == "Sword")
         {
             //kncokback
-            transform.Translate(new Vector3(.4f, 0, 0));
+            //transform.Translate(new Vector3(-.4f, 0, 0));
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = Color.red;
             flashTimer = 20;

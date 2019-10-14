@@ -137,6 +137,12 @@ public class playerMovement : MonoBehaviour
                 animator.SetInteger("item", 1);
             }
         }
+        if (collision.gameObject.tag == "mimic")
+        {
+            Destroy(collision.gameObject);
+            health = Mathf.Min(10, health + 1);
+            hearts[health - 1].color = new Color(1, 1, 1, 1);
+        }
         if (collision.gameObject.tag == "SwordNine")
         {
             itemEquipped = 2;
@@ -148,7 +154,7 @@ public class playerMovement : MonoBehaviour
             attackDamage = 2;
             swordsCollected++;
             WeaponCount.text = "Weapons Collected: " + swordsCollected;
-            if (swordsCollected == 8)
+            if (swordsCollected >= 8)
             {
                 activateExit();
             }
