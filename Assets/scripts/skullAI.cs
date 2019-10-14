@@ -11,6 +11,9 @@ public class skullAI : MonoBehaviour
     public float startDelay = 10f;
     Animator animator;
 
+    //is monster alive
+    private bool alive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,7 @@ public class skullAI : MonoBehaviour
             startDelay = 0;
         startDelay = Mathf.Max(0,startDelay - Time.deltaTime);
     }
-
+    
     private void FixedUpdate()
     {
         //rotate monster
@@ -43,7 +46,7 @@ public class skullAI : MonoBehaviour
         body.velocity = new Vector2(0, 0);
 
         //move monster
-        if(startDelay == 0)
+        if(startDelay == 0 && alive)
             transform.Translate(new Vector3(.03f, 0, 0));
     }
 
@@ -53,8 +56,10 @@ public class skullAI : MonoBehaviour
         if (collision.gameObject.tag == "Sword")
         {
             health--;
+            //all objects destroy themselves at the end of the death animation
             if (health <= 0)
             {
+                alive = false;
                 animator.SetTrigger("Death");
                 //Destroy(gameObject);
                 //Destroy(GetComponent<Collider2D>());

@@ -126,12 +126,17 @@ public class playerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             animator.SetInteger("item", 1);
         }
+        if (collision.gameObject.tag == "GoodStatue")
+        {
+            itemEquipped = 2;
+            Destroy(collision.gameObject);
+            animator.SetInteger("item", 2);
+        }
     }
 
     //player takes damage when entering a monster's hitbox
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(hearts.Length);
         //contact with monster
         if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
         {
