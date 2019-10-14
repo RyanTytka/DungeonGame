@@ -80,6 +80,9 @@ public class playerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
 
+            //play sword swoosh
+            GetComponent<MoreAudioClips>().PlayClip(2);
+
             if(itemEquipped == 1)
                 swing = Instantiate(stickHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
             else
@@ -183,6 +186,8 @@ public class playerMovement : MonoBehaviour
         }
         if (collision.gameObject.tag == "SwordNine")
         {
+            //play pickup sound
+            GetComponent<MoreAudioClips>().PlayClip(1);
             itemEquipped = 2;
             attackSpeed = .2f;
             //Destroy(collision.gameObject);

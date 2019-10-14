@@ -21139,7 +21139,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: 8ef80705fe0a79d4abbbb9b0e40feda6, type: 3}
+  - {fileID: 8300000, guid: e66f0d5de3c932c47ab78f3eae84a993, type: 3}
+  - {fileID: 8300000, guid: edf75f5af98eeea4e8491d0cb5f1323d, type: 3}
   volumes:
+  - 1
+  - 1
   - 1
 --- !u!82 &1286359775
 AudioSource:
