@@ -17,6 +17,12 @@ public class playerMovement : MonoBehaviour
     float attackSpeed = 0f;
     public Text WeaponCount;
 
+    public Text timeText;
+    private float time;
+    private string minLevel;
+    private string secLevel;
+
+
     public Sprite playerStick;
     int itemEquipped = 0;
 
@@ -128,6 +134,23 @@ public class playerMovement : MonoBehaviour
         Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         float angleOfRotation = Mathf.Atan2(mouseWorldPos.y - transform.position.y, mouseWorldPos.x - transform.position.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
+
+        if(Time.timeSinceLevelLoad > 1200)
+        {
+            gameOver();
+        }
+
+        minLevel = (Time.timeSinceLevelLoad / 60).ToString("F0");
+        secLevel = (Time.timeSinceLevelLoad % 60).ToString("F2");
+        if (Time.timeSinceLevelLoad / 60 < 10)
+        {
+            minLevel = "0" + minLevel;
+        }
+        if (Time.timeSinceLevelLoad % 60 < 10)
+        {
+            secLevel = "0" + secLevel;
+        }
+        timeText.text = minLevel + ":" + secLevel;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -136,7 +159,7 @@ public class playerMovement : MonoBehaviour
         {
             //play oof
 
-            GetComponent<MoreAudioClips>().PlayClip(0);
+            //GetComponent<MoreAudioClips>().PlayClip(0);
             health--;
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
@@ -172,6 +195,7 @@ public class playerMovement : MonoBehaviour
             sr.sprite = empty;
             animator.SetInteger("item", 2);
             attackDamage = 2;
+            collision.gameObject.tag = "SwordNineEmpty";
             swordsCollected++;
             WeaponCount.text = "Weapons Collected: " + swordsCollected;
             if (swordsCollected >= 8)
