@@ -28,6 +28,7 @@ public class spiritSpawner : MonoBehaviour
             Vector3 spiritPos = new Vector3(xPos, yPos, -3);
             GameObject spirit = Instantiate(mimic, spiritPos, Quaternion.identity);
             spirit.tag = "monster";
+            Destroy(gameObject);
         }
     }
 }

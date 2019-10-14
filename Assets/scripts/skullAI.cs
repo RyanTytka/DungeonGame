@@ -34,7 +34,7 @@ public class skullAI : MonoBehaviour
             startDelay = 0;
         startDelay = Mathf.Max(0,startDelay - Time.deltaTime);
     }
-
+    
     private void FixedUpdate()
     {
         //rotate monster
