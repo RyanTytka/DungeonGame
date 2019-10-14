@@ -59,7 +59,9 @@ public class skullAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
-            health--;
+            GameObject player = GameObject.Find("player");
+            playerMovement script = player.GetComponent<playerMovement>();
+            health -= script.attackDamage;
             //plays skull crack sound
             source.Play();
             //all objects destroy themselves at the end of the death animation
