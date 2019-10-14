@@ -15,6 +15,6 @@ public class audioSources : MonoBehaviour
      * 234553__electroviolence__swoosh-5.wav Electroviolence https://freesound.org/people/Electroviolence/sounds/234553/
      * 395891__glock102020202__horror-theme.wav glock102020202 https://freesound.org/people/glock102020202/sounds/395891/
      * 74963__zmb94__campfire-1.wav zmb94 https://freesound.org/people/zmb94/sounds/74963/
-     * 74963__zmb94__campfire-1.wav xtrgamr https://freesound.org/people/xtrgamr/sounds/257780/
+     * 257780__xtrgamr__man-oof.wav xtrgamr https://freesound.org/people/xtrgamr/sounds/257780/
      */
 }
