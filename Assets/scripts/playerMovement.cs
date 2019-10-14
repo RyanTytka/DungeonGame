@@ -156,7 +156,7 @@ public class playerMovement : MonoBehaviour
         {
             //play oof
 
-            GetComponent<MoreAudioClips>().PlayClip(0);
+            //GetComponent<MoreAudioClips>().PlayClip(0);
             health--;
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
@@ -190,6 +190,7 @@ public class playerMovement : MonoBehaviour
             sr.sprite = empty;
             animator.SetInteger("item", 2);
             attackDamage = 2;
+            collision.gameObject.tag = "SwordNineEmpty";
             swordsCollected++;
             WeaponCount.text = "Weapons Collected: " + swordsCollected;
             if (swordsCollected >= 8)
