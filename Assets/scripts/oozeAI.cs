@@ -11,11 +11,18 @@ public class oozeAI : MonoBehaviour
     public int health = 10;
     int flashTimer = 0;
 
+    //is monster alive
+    private bool alive = true;
+
+    //allows playing of animation
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,17 +35,17 @@ public class oozeAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //rotate monster
-        Vector3 targetPos = target.position;
-        float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
+            //rotate monster
+            Vector3 targetPos = target.position;
+            float angleOfRotation = Mathf.Atan2(targetPos.y - transform.position.y, targetPos.x - transform.position.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
 
         //prevent monster from being pushed by player
         body.velocity = new Vector2(0, 0);
 
         //move monster
         body.velocity = new Vector2(0, 0);
-        if (flashTimer <= 0)
+        if (flashTimer <= 0 && alive)
             transform.Translate(new Vector3(.015f, 0, 0));
 
     }
@@ -53,7 +60,10 @@ public class oozeAI : MonoBehaviour
 
             health -= 4;
             if (health <= 0)
-                Destroy(gameObject);
+            {
+                alive = false;
+                animator.SetTrigger("Death");
+            }
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = Color.red;
             flashTimer = 20;

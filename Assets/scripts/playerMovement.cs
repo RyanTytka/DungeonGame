@@ -108,8 +108,27 @@ public class playerMovement : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angleOfRotation);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
+        {
+            health--;
+            hearts[health].color = new Color(1, 1, 1, 0);
+            damageBoostTimer = 2;
+        }
+        if (health <= 0)
+        {
+            gameOver();
+        }
+        if (collision.gameObject.tag == "Stick")
+        {
+            itemEquipped = 1;
+            Destroy(collision.gameObject);
+            animator.SetInteger("item", 1);
+        }
+    }
+
     //player takes damage when entering a monster's hitbox
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //contact with monster
@@ -119,7 +138,7 @@ public class playerMovement : MonoBehaviour
             hearts[health].color = new Color(1, 1, 1, 0);
             damageBoostTimer = 2;
         }
-        else if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
+        if (damageBoostTimer <= 0 && collision.gameObject.tag == "swordArm")
         {
             health --;
             hearts[health].color = new Color(1, 1, 1, 0);
@@ -141,13 +160,6 @@ public class playerMovement : MonoBehaviour
             {
                 activateExit();
             }
-        }
-
-        if(collision.gameObject.tag == "Stick")
-        {
-            itemEquipped = 1;
-            Destroy(collision.gameObject);
-            animator.SetInteger("item", 1);
         }
     }
 
