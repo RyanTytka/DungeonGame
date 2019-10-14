@@ -20132,24 +20132,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 854836142, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 364121648, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
-      propertyPath: health
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 364121648, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
-      propertyPath: spiritAttack
-      value: 
-      objectReference: {fileID: 6485932142949228824, guid: 34b85ad49d0d53f4fb87e8ebb7c8f4cb,
-        type: 3}
-    - target: {fileID: 3930706144423743506, guid: d877f8aad7cb935419ba0b5cf1fa48ea,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d877f8aad7cb935419ba0b5cf1fa48ea, type: 3}
 --- !u!1001 &1763710350

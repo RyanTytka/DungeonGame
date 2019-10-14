@@ -88,7 +88,7 @@ public class mobSpawn : MonoBehaviour
 
             if (allTiles[ranX + 13 + (ranY + 36) * bounds.size.x].name == "floor")
             {
-                Debug.Log(ranX + ", " + ranY);
+                //Debug.Log(ranX + ", " + ranY);
                 GameObject pickupAgain = Instantiate(pickup, new Vector3(ranX, ranY, -3), Quaternion.identity);
             }
             else
@@ -109,7 +109,8 @@ public class mobSpawn : MonoBehaviour
     }
 
     private void spawnSwords()
-    { 
+    {
+        Debug.Log("stuff");
         // Set Cords: 1(-4.5f, 9.0f)ReCh 2(3.5f, 9f)ReCh 3(16.5f, 10.5f)ReCh 4(23.5f, 1.0f)ReCh 5(19.5f, -12.5f)ReCh 6(15.5f, -13.0f)ReCh 7(18.5f, -25.5f)ReCh 8(11.5f, -26.5f)ReCh 9(2.5f, -29.0f)ReCh 10(-2.5f, -1.5f)ReCh 11(-.5f, -12.5f)ReCh 12(-3.5f, -18.5f)ReCh 13(4.5f, -12.5f)ReCh 14(-5.5f, -31.5f)Ch 15(15.5f, -31.5f)ReCh 16(14.5, -19.0f)ReCh
         int ranNum;
         int numSwords = 9;
@@ -133,13 +134,14 @@ public class mobSpawn : MonoBehaviour
             ranNum = Random.Range(0, 16);
             if (allTiles[(int)(positions[ranNum].x + 13) + (int)((positions[ranNum].y + 36) * bounds.size.x)].name == "floor" && positions[ranNum] != empty)
             {
-                GameObject mimicmonster = Instantiate(mimic, positions[ranNum], Quaternion.identity);
+                GameObject mimicmonster = Instantiate(sword, positions[ranNum], Quaternion.identity);
                 mimicmonster.tag = "mimic";
                 positions[ranNum] = empty;
                 numMimic--;
             }
         }
 
+        //activate mimic triggers for the mimics that are active in the scene
         GameObject[] mimicTriggers = GameObject.FindGameObjectsWithTag("mimicTrigger");
         GameObject[] mimicmonsters = GameObject.FindGameObjectsWithTag("mimic");
         for (int i = 0; i < mimicmonsters.Length; i++)
@@ -147,12 +149,13 @@ public class mobSpawn : MonoBehaviour
             for(int j = 0; j < mimicTriggers.Length; j++)
             {
                 string mimicStr = mimicmonsters[i].transform.position.ToString();
-                string triggerStr = mimicTriggers[j].name.Substring(0, mimicTriggers[j].name.IndexOf("_")) + ", 0.0";
+                string triggerStr = mimicTriggers[j].name.Substring(0, mimicTriggers[j].name.IndexOf("_")) + ", -3.0";
 
                 if (mimicStr.Substring(1, mimicStr.Length - 2) == triggerStr)
                 {
-                    //Debug.Log(mimicStr.Substring(1, mimicStr.Length - 2) + "==" + triggerStr);
+                    Debug.Log(mimicStr.Substring(1, mimicStr.Length - 2) + "==" + triggerStr);
                     mimicTriggers[j].GetComponent<BoxCollider2D>().enabled = true;
+                    mimicTriggers[j].GetComponent<SpriteRenderer>().color = new Color(1,0,0,1);
                 }
             }
         }
