@@ -45,6 +45,7 @@ public class playerMovement : MonoBehaviour
     public Sprite empty;
     public int swordsCollected = 0;
     public Tilemap tilemap;
+    public Text timerVis;
 
     //loop sound time
     private float loopTimer = 0;
@@ -61,6 +62,11 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            timerVis.color = new Color(0, 0, 0, 0);
+        }
+
         if (playerDied && Input.anyKeyDown)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
