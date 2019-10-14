@@ -17,12 +17,16 @@ public class oozeAI : MonoBehaviour
     //allows playing of animation
     Animator animator;
 
+    //holds sound
+    private AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +59,8 @@ public class oozeAI : MonoBehaviour
     {
         if(collision.gameObject.tag == "Sword")
         {
+            //plays on hit sound
+            source.Play();
             //kncokback
             transform.Translate(new Vector3(-.4f,0,0));
 
