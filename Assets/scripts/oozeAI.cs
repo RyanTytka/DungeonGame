@@ -8,7 +8,7 @@ public class oozeAI : MonoBehaviour
     Vector3 dir;
     Quaternion facing;
     Rigidbody2D body;
-    public int health = 10;
+    public int health = 3;
     int flashTimer = 0;
 
     //is monster alive
@@ -64,7 +64,9 @@ public class oozeAI : MonoBehaviour
             //kncokback
             transform.Translate(new Vector3(-.4f,0,0));
 
-            health -= 4;
+            GameObject player = GameObject.Find("player");
+            playerMovement script = player.GetComponent<playerMovement>();
+            health -= script.attackDamage;
             if (health <= 0)
             {
                 alive = false;

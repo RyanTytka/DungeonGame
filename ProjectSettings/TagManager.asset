@@ -10,6 +10,9 @@ TagManager:
   - mimicTrigger
   - mimic
   - Stick
+  - winZone
+  - GoodStatue
+  - SwordNine
   layers:
   - Default
   - TransparentFX
