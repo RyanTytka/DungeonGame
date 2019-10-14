@@ -9,7 +9,7 @@ public class spiritAI : MonoBehaviour
     Transform target;
     Vector3 dir;
     Rigidbody2D body;
-    public int health = 10;
+    public int health = 5;
 
     //Animator field to allow attack and death animation
     Animator animator;
@@ -127,11 +127,13 @@ public class spiritAI : MonoBehaviour
         if (collision.gameObject.tag == "Sword")
         {
             //kncokback
-            transform.Translate(new Vector3(-.4f, 0, 0));
+            transform.Translate(new Vector3(.4f, 0, 0));
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             sr.color = Color.red;
             flashTimer = 20;
-            health -= 4;
+            GameObject player = GameObject.Find("player");
+            playerMovement script = player.GetComponent<playerMovement>();
+            health -= script.attackDamage;
             //should play death animation
             if (health <= 0)
             {

@@ -12,7 +12,7 @@ public class player : MonoBehaviour
     public Transform attackPos;
     public float attackRange = 2;
     public LayerMask enemies;
-    private int attackDamage = 1;
+    public  int attackDamage = 1;
     private float attackCooldown = 0;
 
     // Start is called before the first frame update

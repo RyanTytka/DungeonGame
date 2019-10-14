@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour
     GameObject swing;
     Animator animator;
     public Camera camera;
-    public GameObject swordHitbox;
+    public GameObject swordHitbox, stickHitbox;
     public Light highLight, lowLight, itemLight;
     float timer = 1f;
 
@@ -22,6 +22,7 @@ public class playerMovement : MonoBehaviour
     float vertical;
 
     private int health = 10;
+    public int attackDamage = 1;
     public Text healthText;
     private float damageBoostTimer = 0;
     public GameObject healthParent;
@@ -56,7 +57,11 @@ public class playerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
 
-            swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
+            if(itemEquipped == 1)
+                swing = Instantiate(stickHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
+            else
+                swing = Instantiate(swordHitbox, transform.position, transform.rotation * Quaternion.Euler(0, 0, 270));
+
             timer = 0f;
         }
 
@@ -126,11 +131,12 @@ public class playerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             animator.SetInteger("item", 1);
         }
-        if (collision.gameObject.tag == "GoodStatue")
+        if (collision.gameObject.tag == "SwordNine")
         {
             itemEquipped = 2;
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             animator.SetInteger("item", 2);
+            attackDamage = 2;
         }
     }
 
@@ -161,11 +167,16 @@ public class playerMovement : MonoBehaviour
         if (collision.gameObject.tag == "SwordNine")
         {
             swordsCollected++;
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             if (swordsCollected == 8)
             {
                 activateExit();
             }
+        }
+
+        if(collision.gameObject.tag == "winZone")
+        {
+            win();
         }
     }
 
@@ -186,6 +197,14 @@ public class playerMovement : MonoBehaviour
         gameOverScreen.color = new Color(0, 0, 0, 1);
         gameOverText.color = new Color(1, 1, 1, 1);
         healthText.color = new Color(1, 1, 1, 0);
+        playerDied = true;
+    }
+
+    private void win()
+    {
+        gameOverScreen.color = new Color(0,0,0,1);
+        gameOverText.text = "You Win";
+        gameOverText.color = new Color(1,1,1,1);
         playerDied = true;
     }
 }

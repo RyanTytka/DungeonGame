@@ -157,7 +157,7 @@ public class mobSpawn : MonoBehaviour
         int numSwords = 9;
         int numMimic = 7;
         Vector3 empty = new Vector3(0f, 0f, -3);
-        Vector3[] positions = { new Vector3(-4.5f, 9.0f, -3), new Vector3(3.5f, 9f, -3), new Vector3(16.5f, 10.5f, -3), new Vector3(23.5f, 1.0f, -3), new Vector3(19.5f, -12.5f, -3), new Vector3(15.5f, -13.0f, -3), new Vector3(18.5f, -25.5f, -3), new Vector3(11.5f, -26.5f, -3), new Vector3(2.5f, -29.0f, -3), new Vector3(-2.5f, -1.5f, -3), new Vector3(-.5f, -12.5f), new Vector3(-3.5f, -18.5f, -3), new Vector3(4.5f, -12.5f, -3), new Vector3(-5.5f, -33.5f, -3), new Vector3(15.5f, -31.5f, -3), new Vector3(14.5f, -19.0f, -3) };
+        Vector3[] positions = { new Vector3(-4.5f, 9.0f, -3), new Vector3(3.5f, 9f, -3), new Vector3(16.5f, 10.5f, -3), new Vector3(23.5f, 1.0f, -3), new Vector3(19.5f, -12.5f, -3), new Vector3(15.5f, -13.0f, -3), new Vector3(18.5f, -25.5f, -3), new Vector3(11.5f, -26.5f, -3), new Vector3(2.5f, -29.0f, -3), new Vector3(-2.5f, -1.5f, -3), new Vector3(-.5f, -12.5f, -3), new Vector3(-3.5f, -18.5f, -3), new Vector3(4.5f, -12.5f, -3), new Vector3(-5.5f, -33.5f, -3), new Vector3(15.5f, -31.5f, -3), new Vector3(14.5f, -19.0f, -3) };
         ranNum = Random.Range(0, 16);
 
         while (numSwords > 0)
