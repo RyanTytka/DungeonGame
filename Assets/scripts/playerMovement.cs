@@ -55,6 +55,11 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerDied && Input.anyKeyDown)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         timer += Time.deltaTime;
@@ -103,10 +108,7 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-        if (playerDied && Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        
     }
 
 
@@ -127,7 +129,7 @@ public class playerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster")
+        if (damageBoostTimer <= 0 && collision.gameObject.tag == "monster" && !playerDied)
         {
             //play oof
 
@@ -138,6 +140,7 @@ public class playerMovement : MonoBehaviour
         }
         if (health <= 0)
         {
+            playerDied = true;
             gameOver();
         }
         if (collision.gameObject.tag == "Stick")
@@ -148,6 +151,12 @@ public class playerMovement : MonoBehaviour
                 itemEquipped = 1;
                 animator.SetInteger("item", 1);
             }
+        }
+        if (collision.gameObject.tag == "mimic")
+        {
+            Destroy(collision.gameObject);
+            health = Mathf.Min(10, health + 1);
+            hearts[health - 1].color = new Color(1, 1, 1, 1);
         }
         if (collision.gameObject.tag == "SwordNine")
         {
@@ -160,7 +169,7 @@ public class playerMovement : MonoBehaviour
             attackDamage = 2;
             swordsCollected++;
             WeaponCount.text = "Weapons Collected: " + swordsCollected;
-            if (swordsCollected == 8)
+            if (swordsCollected >= 8)
             {
                 activateExit();
             }
@@ -216,7 +225,6 @@ public class playerMovement : MonoBehaviour
     {
         gameOverScreen.color = new Color(0, 0, 0, 1);
         gameOverText.color = new Color(1, 1, 1, 1);
-        healthText.color = new Color(1, 1, 1, 0);
         playerDied = true;
     }
 
