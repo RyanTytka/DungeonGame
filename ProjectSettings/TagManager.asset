@@ -11,6 +11,7 @@ TagManager:
   - mimic
   - Stick
   - GoodStatue
+  - SwordNine
   layers:
   - Default
   - TransparentFX
