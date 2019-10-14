@@ -167,6 +167,7 @@ public class playerMovement : MonoBehaviour
             sr.sprite = empty;
             animator.SetInteger("item", 2);
             attackDamage = 2;
+            collision.gameObject.tag = "SwordNineEmpty";
             swordsCollected++;
             WeaponCount.text = "Weapons Collected: " + swordsCollected;
             if (swordsCollected >= 8)
