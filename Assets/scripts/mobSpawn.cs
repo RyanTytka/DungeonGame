@@ -11,7 +11,7 @@ public class mobSpawn : MonoBehaviour
     public GameObject stick;
     public GameObject sword;
     public GameObject mimic;
-
+    
     public GameObject wall;
 
     public Tilemap tilemap;
