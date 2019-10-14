@@ -18,6 +18,13 @@ public class mobSpawn : MonoBehaviour
     private BoundsInt bounds;
     TileBase[] allTiles;
 
+    public int oozeCap = 10;
+    public int skullCap = 5;
+    private int oozeCount = 0;
+    private int skullCount = 0;
+    private int spiritCap = 7;
+    public int monstersCreated = 0;
+
     void Start()
     {
         // Player Spawn 8.5, -4.5
@@ -26,13 +33,47 @@ public class mobSpawn : MonoBehaviour
         spawnSwords();
         spawnStick();
         spawnMonster(10, 5);
-        spawnPickup(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        GameObject[] monstersHaHa = GameObject.FindGameObjectsWithTag("monster");
+        if (monstersHaHa.Length < oozeCap + skullCap + spiritCap)
+        {
+            foreach(GameObject monstersHa in monstersHaHa)
+            {
+                if (monstersHa.name == "ooze(Clone)")
+                {
+                    oozeCount++;
+                }
+                else if (monstersHa.name == "skull(Clone)")
+                {
+                    skullCount++;
+                }
+            }
+            for (int i = 0; i < oozeCap - oozeCount; i++)
+            {
+                spawnMonster(1, 0);
+                monstersCreated++;
+                if (monstersCreated % 2 == 0)
+                {
+                    spawnMonster(1, 0);
+                }
+            }
+            for (int i = 0; i < skullCap - skullCount; i++)
+            {
+                spawnMonster(0, 1);
+                monstersCreated++;
+                if (monstersCreated % 2 == 0)
+                {
+                    spawnMonster(0, 1);
+                }
+            }
+            oozeCount = 0;
+            skullCount = 0;
+        }
+        
     }
 
     private void spawnMonster(int numOoze, int numGhost)

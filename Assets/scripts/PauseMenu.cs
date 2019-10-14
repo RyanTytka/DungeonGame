@@ -10,11 +10,14 @@ public class PauseMenu : MonoBehaviour
     public Rigidbody2D ooze;
     public Rigidbody2D spirit;
     bool paused = false;
+    public GameObject pauseMenu;
+    private Image pauseScreen;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        pauseScreen = pauseMenu.GetComponentInChildren<Image>();
+        pauseScreen.color = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class PauseMenu : MonoBehaviour
         {
             if (paused)
             {
+                pauseScreen.color = new Color(1, 1, 1, 0);
                 Time.timeScale = 1;
                 paused = false;
             }
@@ -34,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         }
         if (paused)
         {
+            pauseScreen.color = new Color(1, 1, 1, 1);
             Time.timeScale = 0;
         }
     }
