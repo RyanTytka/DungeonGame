@@ -16,5 +16,6 @@ public class audioSources : MonoBehaviour
      * 395891__glock102020202__horror-theme.wav glock102020202 https://freesound.org/people/glock102020202/sounds/395891/
      * 74963__zmb94__campfire-1.wav zmb94 https://freesound.org/people/zmb94/sounds/74963/
      * 257780__xtrgamr__man-oof.wav xtrgamr https://freesound.org/people/xtrgamr/sounds/257780/
+     * 439538__ethanchase7744__epic-sword-clang-2.wav ethanchase7744 https://freesound.org/people/ethanchase7744/sounds/439538/
      */
 }
