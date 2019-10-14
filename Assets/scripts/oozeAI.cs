@@ -35,6 +35,8 @@ public class oozeAI : MonoBehaviour
         if(flashTimer == 15)
             GetComponent<SpriteRenderer>().color = Color.white;
         flashTimer--;
+        ////plays on hit sound
+        //GetComponent<MoreAudioClips>().PlayClip(0);
     }
 
     private void FixedUpdate()
@@ -60,7 +62,7 @@ public class oozeAI : MonoBehaviour
         if(collision.gameObject.tag == "Sword")
         {
             //plays on hit sound
-            source.Play();
+            GetComponent<MoreAudioClips>().PlayClip(1);
             //kncokback
             transform.Translate(new Vector3(-.4f,0,0));
 
