@@ -126,6 +126,8 @@ public class spiritAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
+            //on hit sound
+            GetComponent<MoreAudioClips>().PlayClip(1);
             //kncokback
             transform.Translate(new Vector3(.4f, 0, 0));
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
