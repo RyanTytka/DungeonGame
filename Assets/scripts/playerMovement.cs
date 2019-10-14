@@ -175,6 +175,11 @@ public class playerMovement : MonoBehaviour
             }
             
         }
+
+        if (collision.gameObject.tag == "winZone")
+        {
+            win();
+        }
     }
 
     //player takes damage when entering a monster's hitbox
